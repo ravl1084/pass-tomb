@@ -221,9 +221,9 @@ cmd_tomb() {
 	# Create the password tomb
 	_tmp_create
 	_tomb dig "$TOMB_FILE" -s "$TOMB_SIZE"
-	_tomb forge "$TOMB_KEY" -gr "$recipients_arg" $shared $unsafe
-	_tomb lock "$TOMB_FILE" -k "$TOMB_KEY" -gr "$recipients_arg"
-	_tomb open "$TOMB_FILE" -k "$TOMB_KEY" -gr "$recipients_arg" "${PREFIX}/${path}"
+	_tomb forge "$TOMB_KEY" -g -r "$recipients_arg" $shared $unsafe
+	_tomb lock "$TOMB_FILE" -k "$TOMB_KEY" -g -r "$recipients_arg"
+	_tomb open "$TOMB_FILE" -k "$TOMB_KEY" -g -r "$recipients_arg" "${PREFIX}/${path}"
 	_set_ownership "${PREFIX}/${path}"
 
 	# Use the same recipients to initialise the password store
